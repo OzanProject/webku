@@ -1,0 +1,19 @@
+# robots.txt — Ozan Project
+
+# ==============================
+# Allow All Crawlers
+# ==============================
+User-agent: *
+Allow: /
+
+# Blokir halaman admin & sistem (tambahkan sesuai kebutuhan)
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /api/
+Disallow: /login
+Disallow: /register
+Disallow: /password/
+Disallow: /storage/
+
+# Sitemap Location
+Sitemap: /sitemap.xml

@@ -1,0 +1,10 @@
+# ads.txt — Ozan Project
+# Authorized Digital Sellers
+#
+# Format: <SSP/Exchange Domain>, <Publisher ID>, <Relationship>, <Certification Authority ID>
+#
+# --- Tambahkan baris di bawah setelah akun Google AdSense disetujui ---
+# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+#
+# Informasi Publisher ID dapat ditemukan di:
+# Google AdSense → Account → Account Information → Publisher ID
