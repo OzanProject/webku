@@ -20,7 +20,7 @@
 <meta property="og:title" content="@hasSection('og_title')@yield('og_title')@else@yield('title', $siteName . ' - Solusi Digital Profesional')@endif"/>
 <meta property="og:description" content="@hasSection('og_description')@yield('og_description')@else@yield('meta_description', $siteName . ' membangun website, aplikasi mobile & sistem kustom untuk UMKM dan perusahaan Indonesia.')@endif"/>
 <meta property="og:url" content="{{ url()->current() }}"/>
-<meta property="og:image" content="@yield('og_image', asset('images/og-default.jpg'))"/>
+<meta property="og:image" content="@yield('og_image', !empty($siteLogo) ? $siteLogo : asset('images/og-default.jpg'))"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
 <meta property="og:locale" content="id_ID"/>
@@ -31,4 +31,4 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="@hasSection('og_title')@yield('og_title')@else@yield('title', $siteName . ' - Solusi Digital Profesional')@endif"/>
 <meta name="twitter:description" content="@hasSection('og_description')@yield('og_description')@else@yield('meta_description', $siteName . ' membangun website, aplikasi mobile & sistem kustom untuk UMKM dan perusahaan Indonesia.')@endif"/>
-<meta name="twitter:image" content="@yield('og_image', asset('images/og-default.jpg'))"/>
+<meta name="twitter:image" content="@yield('og_image', !empty($siteLogo) ? $siteLogo : asset('images/og-default.jpg'))"/>
