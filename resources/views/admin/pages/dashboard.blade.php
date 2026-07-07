@@ -72,8 +72,8 @@
         <div class="lg:col-span-2 bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm p-md flex flex-col min-h-[400px]">
             <div class="flex justify-between items-center mb-md">
                 <div>
-                    <h3 class="text-body-lg font-body-lg font-bold text-on-surface">Statistik Pengunjung (Ilustrasi)</h3>
-                    <p class="text-label-sm font-label-sm text-on-surface-variant">Trafik Kunjungan 6 Bulan Terakhir</p>
+                    <h3 class="text-body-lg font-body-lg font-bold text-on-surface">Statistik Interaksi</h3>
+                    <p class="text-label-sm font-label-sm text-on-surface-variant">Total Pesanan & Pesan 6 Bulan Terakhir</p>
                 </div>
                 <button type="button" class="text-on-surface-variant hover:text-primary p-xs rounded-md hover:bg-surface-container-high transition-colors">
                     <span class="material-symbols-outlined">more_vert</span>
@@ -81,9 +81,9 @@
             </div>
             
             <!-- Chart Placeholder using stylized CSS elements to look like a chart -->
-            <div class="flex-1 relative w-full h-full border-b border-l border-outline-variant/50 pt-md pb-xs pl-xs flex items-end justify-between px-4 mt-auto">
+            <div class="flex-1 relative w-full h-full border-b border-l border-outline-variant/50 pt-md pb-xs pl-xs flex items-end justify-between px-4 mt-auto mb-8 ml-8 md:ml-10">
                 <!-- Y-Axis labels -->
-                <div class="absolute left-[-30px] top-0 h-full flex flex-col justify-between text-[10px] text-on-surface-variant">
+                <div class="absolute right-full pr-3 top-0 h-full flex flex-col justify-between items-end text-[10px] text-on-surface-variant translate-y-1.5 w-12">
                     @foreach($yAxisLabels as $label)
                         <span>{{ $label }}</span>
                     @endforeach
@@ -99,15 +99,15 @@
                 </div>
                 
                 <!-- Dynamic Bars -->
-                @foreach($visitorStats as $stat)
+                @foreach($interactionStats as $stat)
                 <div class="w-1/12 {{ $stat['color'] ?? 'bg-primary/50' }} rounded-t-sm relative group cursor-pointer hover:bg-primary transition-colors" style="height: {{ $stat['height_percent'] }}%;">
-                    <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface text-[10px] px-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">{{ $stat['display'] }}</div>
+                    <div class="absolute -top-7 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface text-[10px] px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity z-10">{{ $stat['display'] }}</div>
                 </div>
                 @endforeach
                 
                 <!-- X-Axis labels -->
-                <div class="absolute -bottom-6 left-0 w-full flex justify-between text-[10px] text-on-surface-variant px-4">
-                    @foreach($visitorStats as $stat)
+                <div class="absolute top-full mt-2 left-0 w-full flex justify-between text-[10px] text-on-surface-variant px-4">
+                    @foreach($interactionStats as $stat)
                         <span>{{ $stat['month_name'] }}</span>
                     @endforeach
                 </div>
@@ -163,8 +163,8 @@
     <div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden mb-xl">
         <div class="p-md border-b border-outline-variant flex justify-between items-center bg-surface-bright">
             <h3 class="text-body-lg font-body-lg font-bold text-on-surface">Pesan Masuk Terbaru</h3>
-            <a class="text-primary font-label-md text-label-md hover:underline flex items-center gap-xs" href="#">
-                View All <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+            <a class="text-primary font-label-md text-label-md hover:underline flex items-center gap-xs" href="{{ route('admin.messages.index') }}">
+                Lihat Semua <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
             </a>
         </div>
         <div class="overflow-x-auto">

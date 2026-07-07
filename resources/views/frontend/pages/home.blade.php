@@ -86,8 +86,8 @@
 <section class="hz-section">
     <div class="hz-container">
         <div class="hz-section-title-center">
-            <h2 class="hz-section-title mb-2">{{ __('Proses Kerja Kami') }}</h2>
-            <p class="text-[var(--gray-500)] max-w-2xl mx-auto text-[15px]">{{ __('Langkah mudah menuju transformasi digital bisnis Anda.') }}</p>
+            <h2 class="hz-section-title mb-2">{{ __($sections['process_title'] ?? 'Proses Kerja Kami') }}</h2>
+            <p class="text-[var(--gray-500)] max-w-2xl mx-auto text-[15px]">{{ __($sections['process_subtitle'] ?? 'Langkah mudah menuju transformasi digital bisnis Anda.') }}</p>
         </div>
         
         <div class="hz-steps-wrap">
@@ -115,8 +115,8 @@
     <div class="hz-container">
         <div class="hz-section-header">
             <div>
-                <div class="hz-section-label">{{ __('Kategori Produk') }}</div>
-                <h2 class="hz-section-title">{{ __('Pilih Solusi Digital yang') }}<br>{{ __('Sesuai Kebutuhan Anda') }}</h2>
+                <div class="hz-section-label">{{ __($sections['category_label'] ?? 'Kategori Produk') }}</div>
+                <h2 class="hz-section-title">{!! __($sections['category_title'] ?? 'Pilih Solusi Digital yang<br>Sesuai Kebutuhan Anda') !!}</h2>
             </div>
             <a href="{{ route('produk') }}" class="hz-link-more">
                 {{ __('Lihat Semua Kategori') }} <span class="material-symbols-outlined text-[18px]">arrow_right_alt</span>
@@ -143,8 +143,8 @@
     <div class="hz-container">
         <div class="hz-section-header">
             <div>
-                <h2 class="hz-section-title mb-2">{{ __('Produk Populer') }}</h2>
-                <p class="text-[var(--gray-500)] max-w-2xl text-[15px]">{{ __('Template dan solusi siap pakai untuk mempercepat digitalisasi bisnis.') }}</p>
+                <h2 class="hz-section-title mb-2">{{ __($sections['product_title'] ?? 'Produk Populer') }}</h2>
+                <p class="text-[var(--gray-500)] max-w-2xl text-[15px]">{{ __($sections['product_subtitle'] ?? 'Template dan solusi siap pakai untuk mempercepat digitalisasi bisnis.') }}</p>
             </div>
             <a href="{{ route('produk') }}" class="hz-link-more">
                 {{ __('Lihat Semua Produk') }} <span class="material-symbols-outlined text-sm">arrow_forward</span>
@@ -184,8 +184,8 @@
 <section class="hz-section bg-[var(--gray-50)]" id="portofolio">
     <div class="hz-container">
         <div class="hz-section-title-center">
-            <h2 class="hz-section-title mb-2">{{ __('Apa Kata Klien Kami') }}</h2>
-            <p class="text-[var(--gray-500)] max-w-2xl mx-auto text-[15px]">{{ __('Kisah sukses UMKM yang telah go-digital bersama kami.') }}</p>
+            <h2 class="hz-section-title mb-2">{{ __($sections['testimonial_title'] ?? 'Apa Kata Klien Kami') }}</h2>
+            <p class="text-[var(--gray-500)] max-w-2xl mx-auto text-[15px]">{{ __($sections['testimonial_subtitle'] ?? 'Kisah sukses UMKM yang telah go-digital bersama kami.') }}</p>
         </div>
         
         <div class="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-6 hz-slider">

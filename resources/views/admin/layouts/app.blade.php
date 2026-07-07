@@ -70,85 +70,99 @@
         </button>
     </div>
     <div class="flex flex-col gap-sm flex-1 font-label-md text-label-md overflow-y-auto">
-        <!-- Dashboard Link -->
+        <!-- 1. Dashboard -->
         <a class="flex items-center gap-md px-md py-sm rounded-lg {{ request()->routeIs('admin.dashboard') ? 'text-primary dark:text-primary-fixed-dim font-bold border-r-4 border-primary bg-surface-container-high dark:bg-secondary-fixed-variant' : 'text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary hover:bg-surface-container-high dark:hover:bg-secondary-fixed-variant' }} transition-colors" href="{{ route('admin.dashboard') }}">
             <span class="material-symbols-outlined" {!! request()->routeIs('admin.dashboard') ? 'style="font-variation-settings: \'FILL\' 1;"' : '' !!}>dashboard</span>
             Dashboard
         </a>
         
-        <a class="flex items-center gap-md px-md py-sm rounded-lg {{ request()->routeIs('admin.products.*') ? 'text-primary dark:text-primary-fixed-dim font-bold border-r-4 border-primary bg-surface-container-high dark:bg-secondary-fixed-variant' : 'text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary hover:bg-surface-container-high dark:hover:bg-secondary-fixed-variant' }} transition-colors" href="{{ route('admin.products.index') }}">
-            <span class="material-symbols-outlined" {!! request()->routeIs('admin.products.*') ? 'style="font-variation-settings: \'FILL\' 1;"' : '' !!}>inventory_2</span>
-            Products
-        </a>
-        
-        <a class="flex items-center gap-md px-md py-sm rounded-lg {{ request()->routeIs('admin.categories.*') ? 'text-primary dark:text-primary-fixed-dim font-bold border-r-4 border-primary bg-surface-container-high dark:bg-secondary-fixed-variant' : 'text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary hover:bg-surface-container-high dark:hover:bg-secondary-fixed-variant' }} transition-colors" href="{{ route('admin.categories.index') }}">
-            <span class="material-symbols-outlined" {!! request()->routeIs('admin.categories.*') ? 'style="font-variation-settings: \'FILL\' 1;"' : '' !!}>category</span>
-            Kategori
-        </a>
-        
-        <a class="flex items-center gap-md px-md py-sm rounded-lg {{ request()->routeIs('admin.services.*') ? 'text-primary dark:text-primary-fixed-dim font-bold border-r-4 border-primary bg-surface-container-high dark:bg-secondary-fixed-variant' : 'text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary hover:bg-surface-container-high dark:hover:bg-secondary-fixed-variant' }} transition-colors" href="{{ route('admin.services.index') }}">
-            <span class="material-symbols-outlined" {!! request()->routeIs('admin.services.*') ? 'style="font-variation-settings: \'FILL\' 1;"' : '' !!}>design_services</span>
-            Services
-        </a>
-        
-        <a class="flex items-center gap-md px-md py-sm rounded-lg {{ request()->routeIs('admin.testimonials.*') ? 'text-primary dark:text-primary-fixed-dim font-bold border-r-4 border-primary bg-surface-container-high dark:bg-secondary-fixed-variant' : 'text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary hover:bg-surface-container-high dark:hover:bg-secondary-fixed-variant' }} transition-colors" href="{{ route('admin.testimonials.index') }}">
-            <span class="material-symbols-outlined" {!! request()->routeIs('admin.testimonials.*') ? 'style="font-variation-settings: \'FILL\' 1;"' : '' !!}>rate_review</span>
-            Testimonials
-        </a>
-
-        <a class="flex items-center gap-md px-md py-sm rounded-lg {{ request()->routeIs('admin.portfolios.*') ? 'text-primary dark:text-primary-fixed-dim font-bold border-r-4 border-primary bg-surface-container-high dark:bg-secondary-fixed-variant' : 'text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary hover:bg-surface-container-high dark:hover:bg-secondary-fixed-variant' }} transition-colors" href="{{ route('admin.portfolios.index') }}">
-            <span class="material-symbols-outlined" {!! request()->routeIs('admin.portfolios.*') ? 'style="font-variation-settings: \'FILL\' 1;"' : '' !!}>photo_library</span>
-            Portofolio
-        </a>
-
-        <a class="flex items-center gap-md px-md py-sm rounded-lg {{ request()->routeIs('admin.processes.*') ? 'text-primary dark:text-primary-fixed-dim font-bold border-r-4 border-primary bg-surface-container-high dark:bg-secondary-fixed-variant' : 'text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary hover:bg-surface-container-high dark:hover:bg-secondary-fixed-variant' }} transition-colors" href="{{ route('admin.processes.index') }}">
-            <span class="material-symbols-outlined" {!! request()->routeIs('admin.processes.*') ? 'style="font-variation-settings: \'FILL\' 1;"' : '' !!}>list_alt</span>
-            Proses Kerja
-        </a>
-
-        <a class="flex items-center gap-md px-md py-sm rounded-lg {{ request()->routeIs('admin.features.*') ? 'text-primary dark:text-primary-fixed-dim font-bold border-r-4 border-primary bg-surface-container-high dark:bg-secondary-fixed-variant' : 'text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary hover:bg-surface-container-high dark:hover:bg-secondary-fixed-variant' }} transition-colors" href="{{ route('admin.features.index') }}">
-            <span class="material-symbols-outlined" {!! request()->routeIs('admin.features.*') ? 'style="font-variation-settings: \'FILL\' 1;"' : '' !!}>stars</span>
-            Keunggulan
-        </a>
-
-        <a class="flex items-center gap-md px-md py-sm rounded-lg {{ request()->routeIs('admin.orders.*') ? 'text-primary dark:text-primary-fixed-dim font-bold border-r-4 border-primary bg-surface-container-high dark:bg-secondary-fixed-variant' : 'text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary hover:bg-surface-container-high dark:hover:bg-secondary-fixed-variant' }} transition-colors" href="{{ route('admin.orders.index') }}">
-            <span class="material-symbols-outlined" {!! request()->routeIs('admin.orders.*') ? 'style="font-variation-settings: \'FILL\' 1;"' : '' !!}>shopping_cart</span>
-            Orders
-        </a>
-        <a class="flex items-center justify-between px-md py-sm rounded-lg {{ request()->routeIs('admin.messages.*') ? 'text-primary dark:text-primary-fixed-dim font-bold border-r-4 border-primary bg-surface-container-high dark:bg-secondary-fixed-variant' : 'text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary hover:bg-surface-container-high dark:hover:bg-secondary-fixed-variant' }} transition-colors" href="{{ route('admin.messages.index') }}">
-            <div class="flex items-center gap-md">
-                <span class="material-symbols-outlined" {!! request()->routeIs('admin.messages.*') ? 'style="font-variation-settings: \'FILL\' 1;"' : '' !!}>mail</span>
-                Pesan Masuk
+        <!-- 2. Katalog & Portofolio -->
+        <div x-data="{ open: {{ request()->routeIs('admin.categories.*', 'admin.products.*', 'admin.services.*', 'admin.portfolios.*') ? 'true' : 'false' }} }" class="flex flex-col">
+            <button @click="open = !open" type="button" class="flex items-center justify-between px-md py-sm rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors {{ request()->routeIs('admin.categories.*', 'admin.products.*', 'admin.services.*', 'admin.portfolios.*') ? 'text-primary bg-primary/5 font-bold' : '' }}">
+                <div class="flex items-center gap-md">
+                    <span class="material-symbols-outlined">inventory_2</span>
+                    <span>Katalog</span>
+                </div>
+                <span class="material-symbols-outlined transition-transform duration-200" :class="open ? 'rotate-180' : ''">expand_more</span>
+            </button>
+            <div x-show="open" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" class="flex flex-col gap-1 pl-12 pr-2 mt-1" style="display: none;">
+                <a href="{{ route('admin.categories.index') }}" class="py-2 text-sm transition-colors {{ request()->routeIs('admin.categories.*') ? 'text-primary font-bold' : 'text-on-surface-variant hover:text-primary' }}">Kategori</a>
+                <a href="{{ route('admin.products.index') }}" class="py-2 text-sm transition-colors {{ request()->routeIs('admin.products.*') ? 'text-primary font-bold' : 'text-on-surface-variant hover:text-primary' }}">Produk</a>
+                <a href="{{ route('admin.services.index') }}" class="py-2 text-sm transition-colors {{ request()->routeIs('admin.services.*') ? 'text-primary font-bold' : 'text-on-surface-variant hover:text-primary' }}">Layanan (Services)</a>
+                <a href="{{ route('admin.portfolios.index') }}" class="py-2 text-sm transition-colors {{ request()->routeIs('admin.portfolios.*') ? 'text-primary font-bold' : 'text-on-surface-variant hover:text-primary' }}">Portofolio</a>
             </div>
-            @php $unreadCount = \App\Models\ContactSubmission::unread()->count(); @endphp
-            @if($unreadCount > 0)
-                <span class="bg-error text-on-error text-[10px] font-bold px-2 py-0.5 rounded-full">{{ $unreadCount }}</span>
-            @endif
-        </a>
-        <a class="flex items-center gap-md px-md py-sm rounded-lg {{ request()->routeIs('admin.users.*') ? 'text-primary dark:text-primary-fixed-dim font-bold border-r-4 border-primary bg-surface-container-high dark:bg-secondary-fixed-variant' : 'text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary hover:bg-surface-container-high dark:hover:bg-secondary-fixed-variant' }} transition-colors" href="{{ route('admin.users.index') }}">
-            <span class="material-symbols-outlined" {!! request()->routeIs('admin.users.*') ? 'style="font-variation-settings: \'FILL\' 1;"' : '' !!}>group</span>
-            Users
-        </a>
-        <!-- Section: Halaman -->
-        <div class="mb-sm">
-            <h3 class="px-md text-label-sm font-bold text-on-surface-variant uppercase tracking-wider mb-xs">Halaman</h3>
-            <a href="{{ route('admin.home-page.index') }}" class="flex items-center gap-md px-md py-sm rounded-lg mb-xs transition-colors {{ request()->routeIs('admin.home-page.*') ? 'bg-primary/10 text-primary font-bold' : 'text-on-surface hover:bg-surface-container hover:text-primary' }}">
-                <span class="material-symbols-outlined text-[20px] {{ request()->routeIs('admin.home-page.*') ? 'icon-filled' : '' }}">view_day</span>
-                Beranda (Hero)
-            </a>
-            <a href="{{ route('admin.about.index') }}" class="flex items-center gap-md px-md py-sm rounded-lg mb-xs transition-colors {{ request()->routeIs('admin.about.*') ? 'bg-primary/10 text-primary font-bold' : 'text-on-surface hover:bg-surface-container hover:text-primary' }}">
-                <span class="material-symbols-outlined {{ request()->routeIs('admin.about.*') ? 'icon-filled' : '' }}">info</span>
-                <span class="font-label-md">Halaman About</span>
-            </a>
-            <a href="{{ route('admin.legals.index') }}" class="flex items-center gap-md px-md py-sm rounded-lg mb-xs transition-colors {{ request()->routeIs('admin.legals.*') ? 'bg-primary/10 text-primary font-bold' : 'text-on-surface hover:bg-surface-container hover:text-primary' }}">
-                <span class="material-symbols-outlined {{ request()->routeIs('admin.legals.*') ? 'icon-filled' : '' }}">policy</span>
-                <span class="font-label-md">Halaman Legal</span>
-            </a>
         </div>
-        <a class="flex items-center gap-md px-md py-sm rounded-lg {{ request()->routeIs('admin.settings.*') ? 'text-primary dark:text-primary-fixed-dim font-bold border-r-4 border-primary bg-surface-container-high dark:bg-secondary-fixed-variant' : 'text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary hover:bg-surface-container-high dark:hover:bg-secondary-fixed-variant' }} transition-colors" href="{{ route('admin.settings.index') }}">
-            <span class="material-symbols-outlined" {!! request()->routeIs('admin.settings.*') ? 'style="font-variation-settings: \'FILL\' 1;"' : '' !!}>settings</span>
-            Settings
-        </a>
+
+        <!-- 3. Konten Website -->
+        <div x-data="{ open: {{ request()->routeIs('admin.features.*', 'admin.processes.*', 'admin.testimonials.*') ? 'true' : 'false' }} }" class="flex flex-col">
+            <button @click="open = !open" type="button" class="flex items-center justify-between px-md py-sm rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors {{ request()->routeIs('admin.features.*', 'admin.processes.*', 'admin.testimonials.*') ? 'text-primary bg-primary/5 font-bold' : '' }}">
+                <div class="flex items-center gap-md">
+                    <span class="material-symbols-outlined">design_services</span>
+                    <span>Konten Web</span>
+                </div>
+                <span class="material-symbols-outlined transition-transform duration-200" :class="open ? 'rotate-180' : ''">expand_more</span>
+            </button>
+            <div x-show="open" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" class="flex flex-col gap-1 pl-12 pr-2 mt-1" style="display: none;">
+                <a href="{{ route('admin.features.index') }}" class="py-2 text-sm transition-colors {{ request()->routeIs('admin.features.*') ? 'text-primary font-bold' : 'text-on-surface-variant hover:text-primary' }}">Keunggulan</a>
+                <a href="{{ route('admin.processes.index') }}" class="py-2 text-sm transition-colors {{ request()->routeIs('admin.processes.*') ? 'text-primary font-bold' : 'text-on-surface-variant hover:text-primary' }}">Proses Kerja</a>
+                <a href="{{ route('admin.testimonials.index') }}" class="py-2 text-sm transition-colors {{ request()->routeIs('admin.testimonials.*') ? 'text-primary font-bold' : 'text-on-surface-variant hover:text-primary' }}">Testimonial</a>
+            </div>
+        </div>
+
+        <!-- 4. Halaman Statis -->
+        <div x-data="{ open: {{ request()->routeIs('admin.home-page.*', 'admin.about.*', 'admin.legals.*') ? 'true' : 'false' }} }" class="flex flex-col">
+            <button @click="open = !open" type="button" class="flex items-center justify-between px-md py-sm rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors {{ request()->routeIs('admin.home-page.*', 'admin.about.*', 'admin.legals.*') ? 'text-primary bg-primary/5 font-bold' : '' }}">
+                <div class="flex items-center gap-md">
+                    <span class="material-symbols-outlined">article</span>
+                    <span>Halaman Statis</span>
+                </div>
+                <span class="material-symbols-outlined transition-transform duration-200" :class="open ? 'rotate-180' : ''">expand_more</span>
+            </button>
+            <div x-show="open" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" class="flex flex-col gap-1 pl-12 pr-2 mt-1" style="display: none;">
+                <a href="{{ route('admin.home-page.index') }}" class="py-2 text-sm transition-colors {{ request()->routeIs('admin.home-page.*') ? 'text-primary font-bold' : 'text-on-surface-variant hover:text-primary' }}">Pengaturan Beranda</a>
+                <a href="{{ route('admin.about.index') }}" class="py-2 text-sm transition-colors {{ request()->routeIs('admin.about.*') ? 'text-primary font-bold' : 'text-on-surface-variant hover:text-primary' }}">Tentang Kami</a>
+                <a href="{{ route('admin.legals.index') }}" class="py-2 text-sm transition-colors {{ request()->routeIs('admin.legals.*') ? 'text-primary font-bold' : 'text-on-surface-variant hover:text-primary' }}">Legal (Privacy & Terms)</a>
+            </div>
+        </div>
+
+        <!-- 5. Interaksi Pelanggan -->
+        <div x-data="{ open: {{ request()->routeIs('admin.orders.*', 'admin.messages.*') ? 'true' : 'false' }} }" class="flex flex-col">
+            <button @click="open = !open" type="button" class="flex items-center justify-between px-md py-sm rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors {{ request()->routeIs('admin.orders.*', 'admin.messages.*') ? 'text-primary bg-primary/5 font-bold' : '' }}">
+                <div class="flex items-center gap-md relative">
+                    <span class="material-symbols-outlined">forum</span>
+                    <span>Interaksi</span>
+                    @php $unreadCount = \App\Models\ContactSubmission::unread()->count(); @endphp
+                    @if($unreadCount > 0)
+                        <span class="absolute -top-1 -right-3 w-2 h-2 bg-error rounded-full border border-surface-container-lowest"></span>
+                    @endif
+                </div>
+                <span class="material-symbols-outlined transition-transform duration-200" :class="open ? 'rotate-180' : ''">expand_more</span>
+            </button>
+            <div x-show="open" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" class="flex flex-col gap-1 pl-12 pr-2 mt-1" style="display: none;">
+                <a href="{{ route('admin.messages.index') }}" class="py-2 flex items-center justify-between text-sm transition-colors {{ request()->routeIs('admin.messages.*') ? 'text-primary font-bold' : 'text-on-surface-variant hover:text-primary' }}">
+                    <span>Pesan Masuk</span>
+                    @if($unreadCount > 0)
+                        <span class="bg-error text-on-error text-[10px] font-bold px-2 py-0.5 rounded-full">{{ $unreadCount }}</span>
+                    @endif
+                </a>
+                <a href="{{ route('admin.orders.index') }}" class="py-2 text-sm transition-colors {{ request()->routeIs('admin.orders.*') ? 'text-primary font-bold' : 'text-on-surface-variant hover:text-primary' }}">Pesanan (Orders)</a>
+            </div>
+        </div>
+
+        <!-- 6. Sistem -->
+        <div x-data="{ open: {{ request()->routeIs('admin.users.*', 'admin.settings.*') ? 'true' : 'false' }} }" class="flex flex-col">
+            <button @click="open = !open" type="button" class="flex items-center justify-between px-md py-sm rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors {{ request()->routeIs('admin.users.*', 'admin.settings.*') ? 'text-primary bg-primary/5 font-bold' : '' }}">
+                <div class="flex items-center gap-md">
+                    <span class="material-symbols-outlined">settings</span>
+                    <span>Sistem</span>
+                </div>
+                <span class="material-symbols-outlined transition-transform duration-200" :class="open ? 'rotate-180' : ''">expand_more</span>
+            </button>
+            <div x-show="open" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" class="flex flex-col gap-1 pl-12 pr-2 mt-1" style="display: none;">
+                <a href="{{ route('admin.users.index') }}" class="py-2 text-sm transition-colors {{ request()->routeIs('admin.users.*') ? 'text-primary font-bold' : 'text-on-surface-variant hover:text-primary' }}">Pengguna (Users)</a>
+                <a href="{{ route('admin.settings.index') }}" class="py-2 text-sm transition-colors {{ request()->routeIs('admin.settings.*') ? 'text-primary font-bold' : 'text-on-surface-variant hover:text-primary' }}">Pengaturan Global</a>
+            </div>
+        </div>
         
         <!-- Go back to Frontend -->
         <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary hover:bg-surface-container-high dark:hover:bg-secondary-fixed-variant transition-colors mt-4 border-t border-outline-variant pt-4" href="{{ route('home') }}" target="_blank">

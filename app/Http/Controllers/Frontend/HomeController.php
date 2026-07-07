@@ -21,6 +21,7 @@ class HomeController extends Controller
             'testimonials' => \App\Models\Testimonial::active()->ordered()->get(),
             'cta'          => \App\Models\Setting::group('cta'),
             'whyUs'        => \App\Models\Setting::group('why_us'),
+            'sections'     => \App\Models\Setting::group('home_sections'),
         ]);
     }
 }

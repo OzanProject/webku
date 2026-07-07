@@ -38,6 +38,11 @@
                     <span class="material-symbols-outlined text-[24px]">ads_click</span>
                     Bagian Call to Action
                 </button>
+
+                <button @click="tab = 'sections'" :class="{ 'bg-primary/10 text-primary font-bold border-r-4 border-primary': tab === 'sections', 'text-on-surface-variant hover:bg-surface-container-lowest hover:text-on-surface border-r-4 border-transparent': tab !== 'sections' }" class="flex items-center gap-md px-lg py-md text-left transition-colors border-t border-outline-variant">
+                    <span class="material-symbols-outlined text-[24px]">title</span>
+                    Judul Section (Baru)
+                </button>
             </div>
         </div>
 
@@ -138,6 +143,68 @@
                         <div>
                             <label for="cta_button_link" class="block text-label-md font-bold text-on-surface mb-xs">Link Tombol CTA</label>
                             <input type="text" name="cta_button_link" id="cta_button_link" value="{{ $settings['cta_button_link'] ?? route('contact') }}" class="w-full border-outline-variant rounded-xl text-body-md bg-surface focus:ring-primary focus:border-primary px-lg py-3 shadow-sm" placeholder="Contoh: https://wa.me/...">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sections Tab -->
+                <div x-show="tab === 'sections'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform translate-y-4" x-transition:enter-end="opacity-100 transform translate-y-0" class="p-lg md:p-xl flex flex-col gap-lg" style="display: none;">
+                    <div class="border-b border-outline-variant pb-md mb-sm">
+                        <h3 class="text-title-lg font-bold text-on-surface flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary">title</span>
+                            Pengaturan Judul Section (Beranda)
+                        </h3>
+                    </div>
+
+                    <!-- Proses Kerja -->
+                    <div class="p-4 bg-surface-container-lowest border border-outline-variant rounded-xl flex flex-col gap-sm">
+                        <h4 class="font-bold text-on-surface mb-2">Section: Proses Kerja Kami</h4>
+                        <div>
+                            <label class="block text-label-md font-bold text-on-surface mb-xs">Judul Utama</label>
+                            <input type="text" name="process_title" value="{{ $settings['process_title'] ?? 'Proses Kerja Kami' }}" class="w-full border-outline-variant rounded-xl text-body-md bg-surface px-lg py-3 shadow-sm">
+                        </div>
+                        <div>
+                            <label class="block text-label-md font-bold text-on-surface mb-xs">Subjudul</label>
+                            <input type="text" name="process_subtitle" value="{{ $settings['process_subtitle'] ?? 'Langkah mudah menuju transformasi digital bisnis Anda.' }}" class="w-full border-outline-variant rounded-xl text-body-md bg-surface px-lg py-3 shadow-sm">
+                        </div>
+                    </div>
+
+                    <!-- Kategori Produk -->
+                    <div class="p-4 bg-surface-container-lowest border border-outline-variant rounded-xl flex flex-col gap-sm">
+                        <h4 class="font-bold text-on-surface mb-2">Section: Kategori Produk</h4>
+                        <div>
+                            <label class="block text-label-md font-bold text-on-surface mb-xs">Label (Kecil)</label>
+                            <input type="text" name="category_label" value="{{ $settings['category_label'] ?? 'Kategori Produk' }}" class="w-full border-outline-variant rounded-xl text-body-md bg-surface px-lg py-3 shadow-sm">
+                        </div>
+                        <div>
+                            <label class="block text-label-md font-bold text-on-surface mb-xs">Judul Utama (Gunakan &lt;br&gt; untuk baris baru)</label>
+                            <input type="text" name="category_title" value="{{ $settings['category_title'] ?? 'Pilih Solusi Digital yang<br>Sesuai Kebutuhan Anda' }}" class="w-full border-outline-variant rounded-xl text-body-md bg-surface px-lg py-3 shadow-sm">
+                        </div>
+                    </div>
+
+                    <!-- Produk Populer -->
+                    <div class="p-4 bg-surface-container-lowest border border-outline-variant rounded-xl flex flex-col gap-sm">
+                        <h4 class="font-bold text-on-surface mb-2">Section: Produk Populer</h4>
+                        <div>
+                            <label class="block text-label-md font-bold text-on-surface mb-xs">Judul Utama</label>
+                            <input type="text" name="product_title" value="{{ $settings['product_title'] ?? 'Produk Populer' }}" class="w-full border-outline-variant rounded-xl text-body-md bg-surface px-lg py-3 shadow-sm">
+                        </div>
+                        <div>
+                            <label class="block text-label-md font-bold text-on-surface mb-xs">Subjudul</label>
+                            <input type="text" name="product_subtitle" value="{{ $settings['product_subtitle'] ?? 'Template dan solusi siap pakai untuk mempercepat digitalisasi bisnis.' }}" class="w-full border-outline-variant rounded-xl text-body-md bg-surface px-lg py-3 shadow-sm">
+                        </div>
+                    </div>
+
+                    <!-- Testimonial -->
+                    <div class="p-4 bg-surface-container-lowest border border-outline-variant rounded-xl flex flex-col gap-sm">
+                        <h4 class="font-bold text-on-surface mb-2">Section: Testimonial</h4>
+                        <div>
+                            <label class="block text-label-md font-bold text-on-surface mb-xs">Judul Utama</label>
+                            <input type="text" name="testimonial_title" value="{{ $settings['testimonial_title'] ?? 'Apa Kata Klien Kami' }}" class="w-full border-outline-variant rounded-xl text-body-md bg-surface px-lg py-3 shadow-sm">
+                        </div>
+                        <div>
+                            <label class="block text-label-md font-bold text-on-surface mb-xs">Subjudul</label>
+                            <input type="text" name="testimonial_subtitle" value="{{ $settings['testimonial_subtitle'] ?? 'Kisah sukses UMKM yang telah go-digital bersama kami.' }}" class="w-full border-outline-variant rounded-xl text-body-md bg-surface px-lg py-3 shadow-sm">
                         </div>
                     </div>
                 </div>

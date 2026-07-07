@@ -17,7 +17,8 @@ class HomeController extends Controller
         $settings = array_merge(
             Setting::group('hero'),
             Setting::group('why_us'),
-            Setting::group('cta')
+            Setting::group('cta'),
+            Setting::group('home_sections')
         );
 
         return view('admin.pages.home.index', compact('settings'));
@@ -44,6 +45,16 @@ class HomeController extends Controller
             'cta_subtitle' => 'cta',
             'cta_button_text' => 'cta',
             'cta_button_link' => 'cta',
+
+            // Home Sections Group
+            'process_title' => 'home_sections',
+            'process_subtitle' => 'home_sections',
+            'category_label' => 'home_sections',
+            'category_title' => 'home_sections',
+            'product_title' => 'home_sections',
+            'product_subtitle' => 'home_sections',
+            'testimonial_title' => 'home_sections',
+            'testimonial_subtitle' => 'home_sections',
         ];
 
         foreach ($fields as $key => $group) {

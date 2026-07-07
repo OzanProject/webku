@@ -19,39 +19,43 @@ class DashboardController extends Controller
         
         $recentMessages = \App\Models\ContactSubmission::latest()->take(5)->get();
         
-        // Visitor Stats logic
-        $visitorStats = [];
-        $maxVisitors = 0;
+        // Interaction Stats logic (Orders + Messages)
+        $interactionStats = [];
+        $maxInteractions = 0;
         
         for ($i = 5; $i >= 0; $i--) {
             $month = \Carbon\Carbon::now()->subMonthsNoOverflow($i);
             
-            $views = \App\Models\Visitor::whereYear('visited_date', $month->year)
-                ->whereMonth('visited_date', $month->month)
-                ->sum('views');
+            $orders = \App\Models\Order::whereYear('created_at', $month->year)
+                ->whereMonth('created_at', $month->month)
+                ->count();
                 
-            if ($views > $maxVisitors) {
-                $maxVisitors = $views;
+            $messages = \App\Models\ContactSubmission::whereYear('created_at', $month->year)
+                ->whereMonth('created_at', $month->month)
+                ->count();
+                
+            $total = $orders + $messages;
+                
+            if ($total > $maxInteractions) {
+                $maxInteractions = $total;
             }
                 
-            $visitorStats[] = [
+            $interactionStats[] = [
                 'month_name' => $month->format('M'),
-                'views' => $views,
-                'display' => $views >= 1000000 ? round($views / 1000000, 1) . 'M' : ($views >= 1000 ? round($views / 1000, 1) . 'k' : $views),
+                'total' => $total,
+                'display' => $total >= 1000000 ? round($total / 1000000, 1) . 'M' : ($total >= 1000 ? round($total / 1000, 1) . 'k' : $total),
             ];
         }
         
-        // Add 20% headroom to max visitors for chart scale
-        $maxChartVal = $maxVisitors > 0 ? ceil($maxVisitors * 1.2) : 100;
+        // Add 20% headroom to max interactions for chart scale
+        $maxChartVal = $maxInteractions > 0 ? ceil($maxInteractions * 1.2) : 5;
         
-        // Ensure maxChartVal is a clean number like 100, 500, 1000
-        $magnitude = pow(10, floor(log10($maxChartVal)));
-        $maxChartVal = ceil($maxChartVal / $magnitude) * $magnitude;
-        if ($maxChartVal == 0) $maxChartVal = 100;
+        // Ensure maxChartVal is a multiple of 5 so the 5 steps are always integers
+        $maxChartVal = max(5, ceil($maxChartVal / 5) * 5);
         
-        foreach ($visitorStats as &$stat) {
-            // Guarantee min height of 5% for visibility if views > 0
-            $stat['height_percent'] = $stat['views'] > 0 ? max(5, min(100, round(($stat['views'] / $maxChartVal) * 100))) : 0;
+        foreach ($interactionStats as &$stat) {
+            // Guarantee min height of 5% for visibility if total > 0
+            $stat['height_percent'] = $stat['total'] > 0 ? max(5, min(100, round(($stat['total'] / $maxChartVal) * 100))) : 0;
             
             // Color variation logic based on height
             if ($stat['height_percent'] < 30) $stat['color'] = 'bg-primary/30';
@@ -82,6 +86,6 @@ class DashboardController extends Controller
             ];
         }
         
-        return view('admin.pages.dashboard', compact('stats', 'recentMessages', 'visitorStats', 'yAxisLabels', 'systemStatus'));
+        return view('admin.pages.dashboard', compact('stats', 'recentMessages', 'interactionStats', 'yAxisLabels', 'systemStatus'));
     }
 }

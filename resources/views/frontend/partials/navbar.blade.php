@@ -116,10 +116,12 @@
             <a href="{{ route('portofolio') }}" class="{{ $mobClass }} {{ request()->routeIs('portofolio') ? $mobActive : $mobInactive }}">{{ __('Portofolio') }}</a>
             <a href="{{ route('about') }}" class="{{ $mobClass }} {{ request()->routeIs('about') ? $mobActive : $mobInactive }}">{{ __('Tentang Kami') }}</a>
             
+            {{-- 
             <div class="flex gap-sm pt-sm border-t border-outline-variant/20 mt-sm">
                 <a href="{{ route('login') }}" class="flex-1 text-on-surface font-label-md text-label-md hover:bg-surface-variant px-4 py-2 rounded-lg transition-colors text-center border border-outline-variant/30">{{ __('Login') }}</a>
                 <a href="{{ route('register') }}" class="flex-1 bg-primary-container text-on-secondary font-label-md text-label-md px-4 py-2 rounded-lg hover:bg-primary transition-colors text-center shadow-md">{{ __('Daftar') }}</a>
             </div>
+            --}}
             
             <div class="flex items-center gap-2 mt-4 px-2">
                 <span class="material-symbols-outlined text-[20px] text-on-surface-variant">language</span>
