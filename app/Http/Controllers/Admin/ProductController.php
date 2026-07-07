@@ -15,6 +15,8 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
+        $this->authorize('viewAny', Product::class);
+        
         $search = $request->input('search');
         $perPage = $request->input('per_page', 10);
         
@@ -38,6 +40,8 @@ class ProductController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', Product::class);
+        
         $categories = \App\Models\Category::active()->get();
         return view('admin.pages.products.create', compact('categories'));
     }
@@ -47,6 +51,8 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create', Product::class);
+        
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'category_label' => 'required|string|max:100',
@@ -83,6 +89,8 @@ class ProductController extends Controller
     public function edit(string $id)
     {
         $product = Product::findOrFail($id);
+        $this->authorize('update', $product);
+        
         $categories = \App\Models\Category::active()->get();
         return view('admin.pages.products.edit', compact('product', 'categories'));
     }
@@ -93,6 +101,7 @@ class ProductController extends Controller
     public function update(Request $request, string $id)
     {
         $product = Product::findOrFail($id);
+        $this->authorize('update', $product);
         
         $validated = $request->validate([
             'title' => 'required|string|max:255',
@@ -140,6 +149,7 @@ class ProductController extends Controller
     public function destroy(string $id)
     {
         $product = Product::findOrFail($id);
+        $this->authorize('delete', $product);
         
         if ($product->image && Storage::disk('public')->exists($product->image)) {
             Storage::disk('public')->delete($product->image);
@@ -155,6 +165,8 @@ class ProductController extends Controller
      */
     public function downloadTemplate()
     {
+        $this->authorize('create', Product::class);
+        
         $fileName = 'template_import_produk.xlsx';
         $path = storage_path('app/public/' . $fileName);
         
@@ -180,6 +192,8 @@ class ProductController extends Controller
      */
     public function importExcel(Request $request)
     {
+        $this->authorize('create', Product::class);
+        
         $request->validate([
             'file' => 'required|mimes:xlsx,csv|max:5120'
         ]);

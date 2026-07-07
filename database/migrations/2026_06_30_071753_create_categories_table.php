@@ -18,6 +18,10 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->boolean('is_active')->default(true);
             $table->timestamps();
+
+            // Add indexes for query performance
+            $table->index('slug');
+            $table->index('is_active');
         });
     }
 
