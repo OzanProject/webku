@@ -115,7 +115,7 @@
                         </td>
                         <td class="p-md">
                             <span class="inline-flex px-2 py-1 rounded-md bg-secondary/10 text-secondary text-label-sm font-label-sm border border-secondary/20">
-                                {{ $product->category_label }}
+                                {{ $product->category->name ?? 'Uncategorized' }}
                             </span>
                         </td>
                         <td class="p-md font-medium text-on-surface-variant">

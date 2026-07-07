@@ -39,12 +39,16 @@ class PageController extends Controller
             
             if ($categoryModel) {
                 $categoryName = $categoryModel->name;
-                $query->where('category_label', 'like', '%' . $categoryModel->name . '%');
+                $query->whereHas('category', function($q) use ($categoryModel) {
+                    $q->where('name', 'like', '%' . $categoryModel->name . '%');
+                });
             } else {
                 // Fallback for slugs not in database yet
                 $searchCat = str_replace('-', ' ', $request->category);
                 $categoryName = ucwords($searchCat);
-                $query->where('category_label', 'like', '%' . $searchCat . '%');
+                $query->whereHas('category', function($q) use ($searchCat) {
+                    $q->where('name', 'like', '%' . $searchCat . '%');
+                });
             }
         }
 

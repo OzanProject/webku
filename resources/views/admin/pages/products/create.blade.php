@@ -50,11 +50,11 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
                         <!-- Category -->
                         <div>
-                            <label for="category_label" class="block text-label-md font-label-md text-on-surface mb-xs">Kategori Produk <span class="text-error">*</span></label>
-                            <select id="category_label" name="category_label" required class="w-full px-md py-sm rounded-lg border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary bg-surface text-body-md outline-none transition-colors">
+                            <label for="category_id" class="block text-label-md font-label-md text-on-surface mb-xs">Kategori Produk <span class="text-error">*</span></label>
+                            <select id="category_id" name="category_id" required class="w-full px-md py-sm rounded-lg border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary bg-surface text-body-md outline-none transition-colors">
                                 <option value="">-- Pilih Kategori --</option>
                                 @foreach($categories as $category)
-                                    <option value="{{ $category->name }}" {{ old('category_label') == $category->name ? 'selected' : '' }}>{{ $category->name }}</option>
+                                    <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                                 @endforeach
                             </select>
                         </div>

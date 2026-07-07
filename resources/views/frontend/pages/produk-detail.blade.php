@@ -472,7 +472,7 @@
                         <div class="pd-feature-icon"><span class="material-symbols-outlined text-[20px]">category</span></div>
                         <div>
                             <div class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">{{ __('Kategori') }}</div>
-                            <div class="text-sm font-bold text-gray-900">{{ __($product->category_label) }}</div>
+                            <div class="text-sm font-bold text-gray-900">{{ __($product->category->name ?? 'Uncategorized') }}</div>
                         </div>
                     </div>
                 </div>
@@ -485,7 +485,7 @@
             <div class="pd-buy-card">
                 <div class="flex items-center gap-2 mb-4">
                     <span class="material-symbols-outlined text-orange-500 text-sm">sell</span>
-                    <span class="text-[10px] font-bold text-orange-500 uppercase tracking-widest">{{ $product->category_label }}</span>
+                    <span class="text-[10px] font-bold text-orange-500 uppercase tracking-widest">{{ $product->category->name ?? 'Uncategorized' }}</span>
                 </div>
                 
                 <h1 class="pd-buy-title text-[22px] mb-2">{{ $product->title }}</h1>
@@ -519,7 +519,7 @@
                 <div class="text-[11px] font-bold text-orange-500 uppercase tracking-widest mb-4">{{ __('Informasi Produk') }}</div>
                 <div class="pd-info-row">
                     <span class="pd-info-label">{{ __('Kategori') }}</span>
-                    <span class="pd-info-value">{{ __($product->category_label) }}</span>
+                    <span class="pd-info-value">{{ __($product->category->name ?? 'Uncategorized') }}</span>
                 </div>
                 <div class="pd-info-row">
                     <span class="pd-info-label">{{ __('Versi') }}</span>
@@ -553,7 +553,7 @@
                         <span class="bg-orange-500 text-white text-[12px] font-bold px-4 py-2 rounded-lg shadow-lg">{{ __('Lihat Detail') }}</span>
                     </div>
                     <div class="absolute top-3 left-3">
-                        <span class="bg-orange-500 text-white text-[10px] font-bold px-2 py-1 rounded-md shadow-sm">{{ __($related->category_label) }}</span>
+                        <span class="bg-orange-500 text-white text-[10px] font-bold px-2 py-1 rounded-md shadow-sm">{{ __($related->category->name ?? 'Uncategorized') }}</span>
                     </div>
                 </div>
                 <div class="p-5">

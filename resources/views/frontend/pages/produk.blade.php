@@ -114,7 +114,7 @@
                     <div class="pr-card" onclick="window.location.href='{{ route('produk.detail', $product->slug) }}'">
                         <div class="pr-card-img">
                             <img src="{{ $product->image ? asset('storage/'.$product->image) : 'https://via.placeholder.com/400x250' }}" alt="{{ $product->title }}">
-                            <div class="pr-card-cat">{{ $product->category_label }}</div>
+                            <div class="pr-card-cat">{{ $product->category->name ?? 'Uncategorized' }}</div>
                             <div class="pr-card-overlay">
                                 <a href="{{ route('produk.detail', $product->slug) }}" class="btn-detail">Lihat Detail</a>
                             </div>

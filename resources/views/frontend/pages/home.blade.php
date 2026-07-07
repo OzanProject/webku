@@ -156,7 +156,7 @@
             <div class="hz-prod-card" onclick="window.location.href='{{ route('produk.detail', $product->slug) }}'">
                 <div class="hz-prod-img">
                     <img src="{{ $product->image ? asset('storage/'.$product->image) : 'https://via.placeholder.com/400x250' }}" alt="{{ $product->title }}">
-                    <div class="hz-prod-badge bg-[var(--orange)]">{{ $product->category_label }}</div>
+                    <div class="hz-prod-badge bg-[var(--orange)]">{{ $product->category->name ?? 'Uncategorized' }}</div>
                     <div class="hz-prod-overlay">
                         <a href="{{ route('produk.detail', $product->slug) }}" class="btn-detail">{{ __('Lihat Detail') }}</a>
                     </div>

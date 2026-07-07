@@ -21,6 +21,7 @@ class UserSeeder extends Seeder
                 'name' => 'Administrator',
                 'password' => Hash::make('password'), // Hash password secara aman
                 'email_verified_at' => now(), // Tandai email sudah terverifikasi
+                'is_admin' => true, // Berikan hak akses admin
             ]
         );
     }

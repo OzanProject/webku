@@ -25,8 +25,10 @@ class ProductController extends Controller
         if (!empty($search)) {
             $query->where(function($q) use ($search) {
                 $q->where('title', 'like', '%' . $search . '%')
-                  ->orWhere('category_label', 'like', '%' . $search . '%')
-                  ->orWhere('description', 'like', '%' . $search . '%');
+                  ->orWhere('description', 'like', '%' . $search . '%')
+                  ->orWhereHas('category', function($q2) use ($search) {
+                      $q2->where('name', 'like', '%' . $search . '%');
+                  });
             });
         }
         
@@ -55,7 +57,7 @@ class ProductController extends Controller
         
         $validated = $request->validate([
             'title' => 'required|string|max:255',
-            'category_label' => 'required|string|max:100',
+            'category_id' => 'required|exists:categories,id',
             'price' => 'nullable|numeric|min:0',
             'is_active' => 'boolean',
             'sort_order' => 'integer',
@@ -105,7 +107,7 @@ class ProductController extends Controller
         
         $validated = $request->validate([
             'title' => 'required|string|max:255',
-            'category_label' => 'required|string|max:100',
+            'category_id' => 'required|exists:categories,id',
             'price' => 'nullable|numeric|min:0',
             'is_active' => 'boolean',
             'sort_order' => 'integer',
@@ -174,7 +176,7 @@ class ProductController extends Controller
         
         $writer->addRow([
             'title' => 'Produk Contoh',
-            'category_label' => 'Template',
+            'category_label' => 'Template', // Note: Import still uses category name for convenience
             'price' => '150000',
             'description' => 'Ini adalah deskripsi singkat produk.',
             'content' => 'Ini adalah detail konten HTML produk.',
@@ -211,10 +213,16 @@ class ProductController extends Controller
                 return;
             }
             
+            $categoryName = $row['category_label'] ?? 'General';
+            $category = \App\Models\Category::firstOrCreate(
+                ['name' => $categoryName],
+                ['slug' => \Illuminate\Support\Str::slug($categoryName), 'is_active' => true]
+            );
+
             Product::create([
                 'title' => $row['title'],
                 'slug' => Str::slug($row['title']),
-                'category_label' => $row['category_label'] ?? 'General',
+                'category_id' => $category->id,
                 'price' => isset($row['price']) && is_numeric($row['price']) ? (float)$row['price'] : 0,
                 'description' => $row['description'] ?? '-',
                 'content' => $row['content'] ?? null,

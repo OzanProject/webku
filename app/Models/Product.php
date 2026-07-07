@@ -22,4 +22,9 @@ class Product extends Model
     {
         return $query->orderBy('sort_order', 'asc');
     }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
 }
