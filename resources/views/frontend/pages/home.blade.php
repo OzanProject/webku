@@ -93,11 +93,14 @@
         <div class="hz-steps-wrap">
             <div class="hz-steps-line"></div>
             <div class="hz-steps-grid">
-                @foreach($processes as $process)
+                @php
+                    $processIcons = ['support_agent', 'design_services', 'code', 'rocket_launch'];
+                @endphp
+                @foreach($processes as $index => $process)
             <div class="hz-step">
                 <div class="hz-step-icon">
                     <div class="hz-step-num">{{ $process->step_number }}</div>
-                    <svg width="32" height="32" fill="none" stroke="var(--orange)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>
+                    <span class="material-symbols-outlined text-[32px] text-[var(--orange)]">{{ $process->icon ?? $processIcons[$index % count($processIcons)] }}</span>
                 </div>
                 <div>
                     <h4 class="hz-step-title">{{ $process->title }}</h4>
@@ -188,7 +191,31 @@
             <p class="text-[var(--gray-500)] max-w-2xl mx-auto text-[15px]">{{ __($sections['testimonial_subtitle'] ?? 'Kisah sukses UMKM yang telah go-digital bersama kami.') }}</p>
         </div>
         
-        <div class="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-6 hz-slider">
+        <div class="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-6 hz-slider"
+             x-data="{ 
+                 interval: null,
+                 startScroll() {
+                     this.interval = setInterval(() => {
+                         let el = $refs.slider;
+                         if (!el) return;
+                         // Check if reached the end
+                         if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 10) {
+                             el.scrollTo({left: 0, behavior: 'smooth'});
+                         } else {
+                             el.scrollBy({left: 320, behavior: 'smooth'}); // approx width of one card + gap
+                         }
+                     }, 3500); // 3.5 seconds
+                 },
+                 stopScroll() {
+                     clearInterval(this.interval);
+                 }
+             }"
+             x-init="startScroll()"
+             @mouseenter="stopScroll()"
+             @mouseleave="startScroll()"
+             @touchstart.passive="stopScroll()"
+             @touchend.passive="startScroll()"
+             x-ref="slider">
             @forelse($testimonials as $testimonial)
             <div class="flex-none w-[85%] md:w-[350px] snap-center">
                 <div class="hz-testi-card">

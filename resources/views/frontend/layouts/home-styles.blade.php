@@ -462,7 +462,7 @@
 .hz-steps-wrap { position: relative; }
 .hz-steps-line {
     position: absolute;
-    top: 56px; left: 10%; right: 10%;
+    top: 48px; left: 10%; right: 10%;
     height: 2px;
     border-top: 2px dashed var(--orange-border);
     z-index: 0;
@@ -474,6 +474,7 @@
     gap: 32px;
     position: relative;
     z-index: 1;
+    padding-top: 16px;
     padding-bottom: 16px;
     -ms-overflow-style: none; scrollbar-width: none;
 }
